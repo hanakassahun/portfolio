@@ -144,7 +144,8 @@ if (devModeToggle) {
     devModeToggle.addEventListener('change', function() {
         document.body.classList.toggle('dev-mode', this.checked);
         localStorage.setItem('devMode', this.checked ? 'on' : 'off');
-        renderSkills(); // Re-render skills on dev mode toggle
+        renderSkills();
+        if (devPerf) devPerf.style.display = this.checked ? 'block' : 'none';
     });
     // Persist dev mode
     if (localStorage.getItem('devMode') === 'on') {
@@ -283,7 +284,6 @@ if (closeProjectModal && projectModal) {
 
 // ===== DYNAMIC SKILLS SECTION =====
 const skillsDynamic = document.getElementById('skillsDynamic');
-const devMode = document.body.classList.contains('dev-mode');
 const skills = [
     { name: 'Java', level: 90, years: 3, projects: 4, github: 12 },
     { name: 'C++', level: 85, years: 2, projects: 3, github: 8 },
@@ -296,6 +296,7 @@ const skills = [
 ];
 function renderSkills() {
     if (!skillsDynamic) return;
+    const devMode = document.body.classList.contains('dev-mode');
     let html = '<ul class="skills-list">';
     skills.forEach(skill => {
         html += `<li style="margin-bottom:1.2rem;">
