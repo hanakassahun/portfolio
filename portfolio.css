@@ -28,6 +28,14 @@ body {
     font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.7;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.case-study-back {
+    margin: 1rem auto 0;
+    max-width: var(--max-width);
+    padding: 0 1.25rem;
 }
 
 a {
