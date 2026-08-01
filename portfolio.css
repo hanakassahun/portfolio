@@ -407,10 +407,39 @@ strong {
     aspect-ratio: 16 / 9;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
-    height: auto !important;
-    object-fit: cover;
+    background: #161616;
     overflow: hidden;
+    position: relative;
     transition: transform 260ms var(--ease);
+    width: 100%;
+}
+
+.project-screenshot img {
+    border: 0;
+    border-radius: 0;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.project-screenshot.image-missing img {
+    display: none;
+}
+
+.project-screenshot.image-missing::before {
+    color: #a3a3a3;
+    content: attr(data-label) " - Preview Coming Soon";
+    font-size: 0.9rem;
+    font-weight: 500;
+    left: 50%;
+    letter-spacing: 0.04em;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
 }
 

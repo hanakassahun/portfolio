@@ -18,6 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
+
+    document.querySelectorAll('.project-screenshot img').forEach(image => {
+        const markMissing = () => {
+            image.parentElement.classList.add('image-missing');
+        };
+        image.addEventListener('error', markMissing);
+        if (image.complete && image.naturalWidth === 0) markMissing();
+    });
 });
 
 // ===== AI CHATBOT MODAL =====
