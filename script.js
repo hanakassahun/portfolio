@@ -213,19 +213,6 @@ if (nav && navLinksList) {
     });
 }
 
-// Simple form validation for contact section
-const contactForm = document.querySelector('#contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-        const email = document.querySelector('#email').value;
-        const message = document.querySelector('#message').value;
-        if (!email || !message) {
-            e.preventDefault();
-            alert('Please fill in all fields.');
-        }
-    });
-}
-
 // ===== ARCHITECTURE VISUALIZER TOGGLE =====
 document.querySelectorAll('.arch-toggle').forEach(btn => {
     btn.addEventListener('click', function() {
@@ -394,43 +381,6 @@ document.querySelectorAll('.case-card').forEach(card => {
         }
     });
 });
-
-// ===== SMART CONTACT FORM LOGIC =====
-const smartForm = document.getElementById('smart-contact-form');
-const smartName = document.getElementById('smart-name');
-const smartEmail = document.getElementById('smart-email');
-const smartMessage = document.getElementById('smart-message');
-const smartSuccess = document.getElementById('smart-contact-success');
-if (smartForm && smartName && smartEmail && smartMessage && smartSuccess) {
-    smartForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = smartName.value.trim();
-        const email = smartEmail.value.trim();
-        const message = smartMessage.value.trim();
-        if (!name || !email || !message) {
-            smartSuccess.style.display = 'block';
-            smartSuccess.style.color = '#ff4b7f';
-            smartSuccess.textContent = 'Please fill in all fields.';
-            setTimeout(() => { smartSuccess.style.display = 'none'; }, 2000);
-            return;
-        }
-        // Simple email validation
-        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-            smartSuccess.style.display = 'block';
-            smartSuccess.style.color = '#ff4b7f';
-            smartSuccess.textContent = 'Please enter a valid email.';
-            setTimeout(() => { smartSuccess.style.display = 'none'; }, 2000);
-            return;
-        }
-        smartSuccess.style.display = 'block';
-        smartSuccess.style.color = '#1aaf5d';
-        smartSuccess.textContent = 'Thank you! Your message was sent.';
-        smartName.value = '';
-        smartEmail.value = '';
-        smartMessage.value = '';
-        setTimeout(() => { smartSuccess.style.display = 'none'; }, 3000);
-    });
-}
 
 // ===== ANALYTICS DASHBOARD DEMO LOGIC =====
 function animateStat(id, target, duration = 1200) {
