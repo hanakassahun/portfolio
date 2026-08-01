@@ -1,3 +1,25 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href');
+        link.classList.toggle('active', linkPage === currentPage);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', event => {
+            const targetId = anchor.getAttribute('href');
+            const target = targetId && targetId.length > 1
+                ? document.querySelector(targetId)
+                : null;
+            if (!target) return;
+            event.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+});
+
 // ===== AI CHATBOT MODAL =====
 const aiChatBtn = document.getElementById('aiChatBtn');
 const aiChatModal = document.getElementById('aiChatModal');
@@ -104,14 +126,16 @@ function setDarkMode(on, animate = true) {
         setTimeout(() => { document.body.style.transition = ''; }, 600);
     }
 }
-darkModeToggle.addEventListener('change', function() {
-    setDarkMode(this.checked);
-});
+if (darkModeToggle) {
+    darkModeToggle.addEventListener('change', function() {
+        setDarkMode(this.checked);
+    });
+}
 // Persist dark mode and detect system preference
 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 if (localStorage.getItem('darkMode') === 'on' || (!localStorage.getItem('darkMode') && prefersDark)) {
     setDarkMode(true, false);
-    darkModeToggle.checked = true;
+    if (darkModeToggle) darkModeToggle.checked = true;
 }
 
 // ===== DEVELOPER MODE TOGGLE =====
@@ -167,53 +191,18 @@ async function fetchGitHubStats() {
     // Contribution graph and repo stars would require more advanced API or third-party widgets
 }
 if (document.getElementById('top-langs')) fetchGitHubStats();
-// script.js
-
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId.length > 1 && document.querySelector(targetId)) {
-            e.preventDefault();
-            document.querySelector(targetId).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Highlight active nav link on scroll
-const sections = document.querySelectorAll('main section');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 80;
-        if (window.scrollY >= sectionTop) {
-            current = section.getAttribute('id');
-        }
-    });
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-            link.classList.add('active');
-        }
-    });
-});
-
-
 // Mobile menu toggle
 const navLinksList = document.querySelector('.nav-links');
 const nav = document.querySelector('nav');
-const toggleButton = document.createElement('button');
-toggleButton.innerHTML = 'Menu';
-toggleButton.classList.add('menu-toggle');
-nav.appendChild(toggleButton);
-toggleButton.addEventListener('click', () => {
-    navLinksList.classList.toggle('active');
-});
+if (nav && navLinksList) {
+    const toggleButton = document.createElement('button');
+    toggleButton.innerHTML = 'Menu';
+    toggleButton.classList.add('menu-toggle');
+    nav.appendChild(toggleButton);
+    toggleButton.addEventListener('click', () => {
+        navLinksList.classList.toggle('active');
+    });
+}
 
 // Simple form validation for contact section
 const contactForm = document.querySelector('#contact-form');
@@ -323,11 +312,6 @@ function renderSkills() {
     skillsDynamic.innerHTML = html;
 }
 renderSkills();
-// Re-render on dev mode toggle
-const devModeToggle = document.getElementById('devModeToggle');
-if (devModeToggle) {
-    devModeToggle.addEventListener('change', renderSkills);
-}
 
 // ===== DEVELOPER MODE PERFORMANCE CREDIBILITY =====
 const devPerf = document.getElementById('devPerf');

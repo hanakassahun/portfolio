@@ -7,52 +7,34 @@
     <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
+    <header>
+        <nav class="container" aria-label="Main Navigation">
+            <div class="logo">Hanna<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
     <main class="container">
         <h1 style="color:#7f1fff;margin-top:2rem;">Case Study: FindAddis</h1>
         <section style="margin-top:2rem;background:#1a0e2a;color:#ffeaff;padding:2rem;border-radius:12px;">
             <h2>Problem</h2>
-            <p>Local businesses in Addis Ababa struggled with online visibility and customer reach.</p>
-            <h2>Solution</h2>
-            <p>FindAddis was developed with real-time search, interactive maps, and business profiles to enhance local visibility and user convenience.</p>
-            <h2>Architecture</h2>
-            <img src="findaddis-arch.png" alt="FindAddis Architecture" style="width:100%;max-width:320px;border-radius:8px;box-shadow:0 2px 12px #7f1fff55;margin-bottom:1rem;">
+            <p>Local businesses in Addis Ababa were difficult to discover online, while residents had no dependable way to search nearby services by category and location. FindAddis turns fragmented local information into a focused, map-driven discovery experience.</p>
+            <h2>Tech Choices</h2>
             <ul>
-                <li>JavaScript, Node.js, Express, MongoDB, ArcGIS</li>
-                <li>Interactive map integration</li>
-                <li>Real-time search</li>
+                <li>JavaScript keeps the search and map experience responsive without forcing full-page reloads.</li>
+                <li>React supports reusable, isolated interface components for business cards, filters, and map results.</li>
+                <li>Node.js and Express provide a lightweight API layer that scales cleanly as listings grow.</li>
+                <li>MongoDB fits evolving business profiles and supports flexible location-focused queries.</li>
             </ul>
-            <h2>Tech Stack</h2>
-            <ul>
-                <li>JavaScript, Node.js, Express, MongoDB, ArcGIS</li>
-            </ul>
-            <h2>Database Schema</h2>
-            <pre style="background:#23272f;color:#ffeaff;padding:1rem;border-radius:8px;">{
-  business_id: ObjectId,
-  name: String,
-  address: String,
-  category: String,
-  location: { lat: Number, lng: Number },
-  profile: String
-}</pre>
-            <h2>Challenges</h2>
-            <ul>
-                <li>Integrating ArcGIS maps</li>
-                <li>Optimizing real-time search</li>
-                <li>Ensuring data accuracy</li>
-            </ul>
-            <h2>Performance Considerations</h2>
-            <ul>
-                <li>Fast search response</li>
-                <li>Efficient map rendering</li>
-            </ul>
-            <h2>Refactor Ideas</h2>
-            <ul>
-                <li>Improve map UI</li>
-                <li>Expand business categories</li>
-            </ul>
-            <h2>Impact</h2>
-            <p>Helped 100+ businesses gain new customers and improved user convenience citywide.</p>
+            <h2>Takeaway</h2>
+            <p>The hardest part was synchronizing search state with ArcGIS map state without stale markers or contradictory results. A single, predictable client state flow made every filter, query, and map update resolve from the same source of truth.</p>
         </section>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>

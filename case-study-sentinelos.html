@@ -7,56 +7,34 @@
     <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
+    <header>
+        <nav class="container" aria-label="Main Navigation">
+            <div class="logo">Hanna<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
     <main class="container">
         <h1 style="color:#7f1fff;margin-top:2rem;">Case Study: SentinelOS</h1>
         <section style="margin-top:2rem;background:#1a0e2a;color:#ffeaff;padding:2rem;border-radius:12px;">
             <h2>Problem</h2>
-            <p>Student data was at risk due to weak authentication and unencrypted storage. Academic environments needed a secure, modular desktop OS.</p>
-            <h2>Solution</h2>
-            <p>SentinelOS was built with robust user authentication, encrypted file storage, and system monitoring. The architecture prioritized security and reliability.</p>
-            <h2>Architecture</h2>
-            <img src="sentinelos-arch.png" alt="SentinelOS Architecture" style="width:100%;max-width:320px;border-radius:8px;box-shadow:0 2px 12px #7f1fff55;margin-bottom:1rem;">
+            <p>Academic environments were storing sensitive student and system data behind weak authentication and inconsistent protection boundaries. SentinelOS addresses that exposure with a modular desktop operating system where identity, encrypted storage, and monitoring are first-class concerns.</p>
+            <h2>Tech Choices</h2>
             <ul>
-                <li>UI → Core Services → Security Module → Database</li>
-                <li>Encrypted file storage</li>
-                <li>System monitoring</li>
+                <li>JavaScript provides a clear event-driven model for coordinating security telemetry and interface feedback.</li>
+                <li>React enables reusable panels for authentication status, file activity, and monitoring signals.</li>
+                <li>Component boundaries make security-sensitive UI behavior easier to test and reason about independently.</li>
+                <li>A modular service layer keeps storage, authorization, and monitoring responsibilities isolated as the system evolves.</li>
             </ul>
-            <h2>Tech Stack</h2>
-            <ul>
-                <li>C#, .NET, SQL Server, WinForms</li>
-            </ul>
-            <h2>Database Schema</h2>
-            <pre style="background:#23272f;color:#ffeaff;padding:1rem;border-radius:8px;">CREATE TABLE Users (
-    id INT PRIMARY KEY,
-    username VARCHAR(50),
-    password_hash VARCHAR(255),
-    role VARCHAR(20)
-);
-CREATE TABLE Files (
-    id INT PRIMARY KEY,
-    owner_id INT,
-    filename VARCHAR(100),
-    encrypted_data BLOB
-);</pre>
-            <h2>Challenges</h2>
-            <ul>
-                <li>Ensuring robust encryption</li>
-                <li>Balancing usability and security</li>
-                <li>Handling system monitoring efficiently</li>
-            </ul>
-            <h2>Performance Considerations</h2>
-            <ul>
-                <li>Optimized for academic workloads</li>
-                <li>Low resource usage</li>
-            </ul>
-            <h2>Refactor Ideas</h2>
-            <ul>
-                <li>Upgrade encryption algorithms</li>
-                <li>Improve modularity for plugins</li>
-            </ul>
-            <h2>Impact</h2>
-            <p>Improved data safety, reduced breaches, and increased system reliability for 200+ users.</p>
+            <h2>Takeaway</h2>
+            <p>The deepest challenge was parsing a noisy stream of system events into trustworthy behavioral signals without blocking the interface. Careful event normalization and explicit state transitions produced monitoring that remained responsive while preserving an auditable security trail.</p>
         </section>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
