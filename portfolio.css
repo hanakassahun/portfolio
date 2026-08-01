@@ -297,6 +297,22 @@ strong {
     z-index: 1;
 }
 
+.eyebrow {
+    color: var(--accent) !important;
+    font-size: 0.78rem !important;
+    font-weight: 650;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.5rem !important;
+    text-transform: uppercase;
+}
+
+.hero-lede {
+    color: var(--muted) !important;
+    font-size: clamp(1.05rem, 2vw, 1.3rem) !important;
+    margin: 1.75rem 0 2.25rem !important;
+    max-width: 600px;
+}
+
 .hero h1 span {
     color: var(--text);
 }
@@ -387,6 +403,21 @@ strong {
     width: 100%;
 }
 
+.project-screenshot {
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    height: auto !important;
+    object-fit: cover;
+    overflow: hidden;
+    transition: transform 260ms var(--ease);
+    width: 100%;
+}
+
+.card:hover .project-screenshot {
+    transform: scale(1.02);
+}
+
 .card h3,
 .service-card h3,
 .case-card h3 {
@@ -412,6 +443,28 @@ strong {
 .card a:not(.btn):hover,
 .case-card a:not(.btn):hover {
     color: var(--accent);
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 1rem 0 1.25rem;
+}
+
+.tech-stack span {
+    background: var(--accent-soft);
+    border: 1px solid rgba(0, 255, 102, 0.18);
+    border-radius: 999px;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.03em;
+    padding: 0.25rem 0.55rem;
+}
+
+.case-study-link {
+    margin-top: 0.5rem;
 }
 
 .skills-list {
@@ -445,6 +498,53 @@ strong {
     box-shadow: none !important;
     color: var(--muted);
     padding: 2rem !important;
+}
+
+.smart-contact {
+    border-top: 1px solid var(--line);
+}
+
+.smart-contact > .container {
+    max-width: 680px;
+}
+
+.smart-contact h2 {
+    margin-bottom: 0.85rem;
+}
+
+.smart-contact > .container > p {
+    margin-bottom: 2rem;
+}
+
+#smart-contact-form label {
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+#smart-contact-form .btn {
+    align-self: flex-start;
+}
+
+#smart-contact-success {
+    color: var(--accent);
+    min-height: 1.6em;
+    text-align: left;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.contact-links a {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
 #contact-form input,
